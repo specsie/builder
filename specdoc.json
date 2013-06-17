@@ -1,0 +1,82 @@
+{
+    "json-schema": [
+        "https://raw.github.com/specsie/foundation/master/schema.json"
+    ], 
+    "specdoc": {
+        "spec": ""
+    }, 
+    "includes": [
+    ], 
+    "inherits": [
+    ], 
+    "constraints": [
+        {
+            "constraint": "A doc which conforms to this spec comprises a software builder program (script).", 
+            "qualifiers": [
+                {
+                    "constraint": "The script takes a spec as input."
+                }, 
+                {
+                    "constraint": "The script produces an output file in JSON", 
+                    "qualifiers": [
+                        {
+                            "constraint": "The output file is written to the /build directory", 
+                            "qualifiers": [
+                                {
+                                    "constraint": "A debug option allows dry-run of the script with no changes to /build"
+                                }, 
+                                {
+                                    "constraint": "If no /build directory exists in the spec, one is created"
+                                }
+                            ]
+                        }, 
+                        {
+                            "constraint": "The output file conforms to the construction spec"
+                        }, 
+                        {
+                            "constraint": "The output file MUST comprise several properties", 
+                            "qualifiers": [
+                                {
+                                    "constraint": "The inherits property MUST comprise a comprehensive inheritance tree from the input spec", 
+                                    "qualifiers": [
+                                        {
+                                            "constraint": "Inheritance loops MUST be shown by reference to another branch in the tree"
+                                        }
+                                    ]
+                                }, 
+                                {
+                                    "constraint": "The status property MUST comprise several properties", 
+                                    "qualifiers": [
+                                        {
+                                            "constraint": ""
+                                        }
+                                    ]
+                                }, 
+                                {
+                                    "constraint": "The constraints property MUST comprise a comprehensive, unordered, non-duplicative list of (qualified) constraints", 
+                                    "qualifiers": [
+                                        {
+                                            "constraint": "If the construction spec is not in the input spec's inheritance tree, the constraints property MUST remain empty"
+                                        }, 
+                                         {
+                                            "constraint": "constraints MAY come from the input spec's includes"
+                                        }, 
+                                        {
+                                            "constraint": "constraints MAY come from inherited includes"
+                                        }, 
+                                        {
+                                            "constraint": "constraints MUST NOT come from another source"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ], 
+    "description": [
+        "here is specified a script to construct /build from a spec"
+    ]
+}

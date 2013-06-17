@@ -1,0 +1,18 @@
+TODO
+
+Convert this .txt into a spec
+
+Make a script or online utility which automatically builds /build/spec.json
+Use Meteor?
+
+
+2) Proceed if build is in the inheritance tree
+	1) If foundation is in the inheritance tree, validate json-schema
+	2) Construct constraints list
+		2.1) use includes 
+		2.1) If decor is in the inheritance tree, use /decorative 
+		2.2) If structure is in the inheritance tree, use /structural
+			2.2.1) Recurse /structural for inherited specs
+2) Update status
+	x.1) Show build errors if any
+3) validate the 
