@@ -17,7 +17,7 @@
                     "constraint": "The script takes a spec as input."
                 }, 
                 {
-                    "constraint": "The script produces an output file in JSON", 
+                    "constraint": "The script produces an output file as JSON", 
                     "qualifiers": [
                         {
                             "constraint": "The output file is written to the /build directory", 
@@ -27,45 +27,60 @@
                                 }, 
                                 {
                                     "constraint": "If no /build directory exists in the spec, one is created"
+                                }, 
+                                {
+                                    "constraint": "If the foundation spec is in the input spec's inheritance tree, the input spec and every spec in its inheritance tree MUST be validated against their respective json-scema", 
+                                    "qualifiers": [
+                                        {
+                                            "constraint": "A spec which has not changed its baseline since its last successful build MAY not be re-validated"
+                                        }
+                                    ]
                                 }
                             ]
                         }, 
                         {
-                            "constraint": "The output file conforms to the construction spec"
-                        }, 
-                        {
-                            "constraint": "The output file MUST comprise several properties", 
+                            "constraint": "The output file MUST conform to the construction spec", 
                             "qualifiers": [
                                 {
-                                    "constraint": "The inherits property MUST comprise a comprehensive inheritance tree from the input spec", 
+                                    "constraint": "According to the construction spec, the output file MUST comprise several properties", 
                                     "qualifiers": [
                                         {
-                                            "constraint": "Inheritance loops MUST be shown by reference to another branch in the tree"
-                                        }
-                                    ]
-                                }, 
-                                {
-                                    "constraint": "The status property MUST comprise several properties", 
-                                    "qualifiers": [
-                                        {
-                                            "constraint": ""
-                                        }
-                                    ]
-                                }, 
-                                {
-                                    "constraint": "The constraints property MUST comprise a comprehensive, unordered, non-duplicative list of (qualified) constraints", 
-                                    "qualifiers": [
-                                        {
-                                            "constraint": "If the construction spec is not in the input spec's inheritance tree, the constraints property MUST remain empty"
-                                        }, 
-                                         {
-                                            "constraint": "constraints MAY come from the input spec's includes"
+                                            "constraint": "The inherits property MUST comprise a comprehensive inheritance tree from the input spec", 
+                                            "qualifiers": [
+                                                {
+                                                    "constraint": "Inheritance loops MUST be shown by reference to another branch in the tree"
+                                                }
+                                            ]
                                         }, 
                                         {
-                                            "constraint": "constraints MAY come from inherited includes"
+                                            "constraint": "The status property MUST comprise several properties", 
+                                            "qualifiers": [
+                                                {
+                                                    "constraint": ""
+                                                }
+                                            ]
                                         }, 
                                         {
-                                            "constraint": "constraints MUST NOT come from another source"
+                                            "constraint": "The constraints property MUST comprise a comprehensive, unordered, non-duplicative list of (qualified) constraints", 
+                                            "qualifiers": [
+                                                {
+                                                    "constraint": "If the construction spec is not in the input spec's inheritance tree, the constraints property MUST remain empty"
+                                                }, 
+                                                {
+                                                    "constraint": "constraints MAY come from the input spec's includes", 
+                                                    "qualifiers": [
+                                                        {
+                                                            "constraint": "If decor is in the inheritance tree, use /decorative"
+                                                        }
+                                                    ]
+                                                }, 
+                                                {
+                                                    "constraint": "constraints MAY come from inherited includes"
+                                                }, 
+                                                {
+                                                    "constraint": "constraints MUST NOT come from another source"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
